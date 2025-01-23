@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+    <title>Document</title>
+</head>
+
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    body{
+        font-family: Arial;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        padding-bottom: 1px;
+    }
+
+    .table{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        margin: 0 15vw;
+    }
+
+    .table-header{
+        display: flex;
+        justify-content: space-around;
+        background-color: rgb(240, 240, 240);
+        padding: 20px;
+        min-width: 600px;
+    }
+
+    .content-table{
+        border-collapse: collapse;
+        min-width: 600px;
+        overflow: hidden;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+        width: 80100%vw;
+    }
+
+    /* Titoli colonna */
+    .content-table thead tr{
+        background-color: #009879;
+        color: white;
+        font-weight: bold;
+    }
+
+    .content-table thead{
+        background-color: #009879;
+        color: white;
+        font-weight: bold;
+        height: 50px;
+    }
+
+    .content-table th,
+    .content-table td {
+        padding: 12px 15px;
+        text-align: center;
+    }
+
+    .content-table tbody tr{
+        border-bottom: 1px solid gray;
+        border-left: 2px solid #009800;
+        border-right: 2px solid #009800;
+    }
+    
+
+    /* Background delle righe con indice dispari*/
+    .content-table tbody tr:nth-of-type(even){
+        background-color: #f3f3f3;
+    }
+
+    /* Seleziona ultima riga e colora il bordo */
+    .content-table tbody tr:last-of-type {
+        border-bottom: 2px solid #009800;
+    }
+
+
+    /* 140x200 | 210x300 */
+    td img{
+        width: 140px; 
+        height: 200px;
+        object-fit: cover;
+        box-shadow: 0 0 3px black;
+        transition: .2s linear;
+    }
+
+    td img:hover{
+        cursor: pointer;
+        transform: scale(1.03);
+    }
+
+    /* Riga selezionata */
+    tr:hover td{
+        background-color: rgba(0, 152, 121,0.3);
+    }
+
+    button{
+        font-weight: bold;
+        border: none;
+        border-radius: 6px;
+        padding: 15px;
+        color: white;
+    }  
+
+    button:hover{
+        cursor: pointer;
+        opacity: .6;
+    }
+
+    .btn-nuova-riga{
+        background-color: #2cb531;
+    }
+
+    td button:nth-child(1){
+        background-color: #0298cf;
+    }
+
+    td button:nth-child(2){
+        background-color: #f80000;
+    }
+
+    .intestazione{
+        height: 50px;
+        background-color: black;
+    }
+
+    .content-table td:nth-child(1) {
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    dialog::backdrop{
+        background-color: rgba(0, 0, 0, 0.5);
+    }
+
+
+    .modal{
+        position: fixed;
+        text-align: center;
+        width: 280px;
+        height: 280px;
+        top: 50%;   /* Posiziona al 50% dell'altezza */
+        left: 50%;  /* Posiziona al 50% della larghezza */
+        transform: translate(-50%, -50%); /* Centra rispetto al proprio centro */
+        padding: 1rem;
+        background-color: white;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    }
+
+    .modal input{
+        display: block;
+    }
+
+    .modal::backdrop{
+        background-color: rgba(0, 0, 0, 0.7);
+    }
+
+
+
+    /*
+        .table {
+    /*max-height: 400px; /* Altezza massima visibile */
+    /*overflow-y: auto;  /* Abilita lo scorrimento verticale */
+    /*overflow-x: hidden; /* Evita lo scorrimento orizzontale */
+    /*border: 1px solid #ccc; }/* Bordo visibile per definire i limiti */ 
+
+
+
+</style>
+
+<body>
+
+    <div class="intestazione">
+        
+    </div>
+
+    <div class="table">
+        <div class="table-header">
+            <h1>Tabella Allegati</h1>
+            <button class="btn-nuova-riga">Nuova Riga</button>
+        </div>
+        <table class="content-table">
+            <thead>
+                <tr>
+                    <th>Posizione</th>
+                    <th>Nome File</th>
+                    <th></th>
+                    <th></th>
+                    <th> Azione </th>
+                </tr>
+            </thead>
+    
+            <tbody>
+                <tr>
+                    <td> 1 </td>
+                    <td> 
+                        <img src="galleria/foto1.jpg" alt="ciao">    
+                    </td>
+                    <td> riga 3 </td>
+                    <td> riga 4 </td>
+                    <td> 
+                        <button> <i class="fa-solid fa-pen-to-square"></i> </button>
+                        <button> <i class="fa-solid fa-trash"></i> </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td> 2 </td>
+                    <td> 
+                        <img src="galleria/foto1.jpg" alt="">    
+                    </td>
+                    <td> riga 2 </td>
+                    <td> riga 3 </td>
+                    <td> 
+                        <button> <i class="fa-solid fa-pen-to-square"></i> </button>
+                        <button> <i class="fa-solid fa-trash"></i> </button>
+                    </td>
+                </tr>
+
+            </tbody>
+        </table>
+
+        <dialog class="modal">
+            <form action="">
+                <h1>Inserisci Allegato</h1>
+                <input type="file" name="" id="">
+                <button class="btn-close-modal">Annulla</button>
+                <button class="btn-save-modal">Salva</button>
+            </form>
+
+        </dialog>
+
+
+    </div>
+
+    <script>
+        const openButton = document.querySelector(".btn-nuova-riga")
+        const closeButton = document.querySelector(".btn-close-modal")
+        const modal = document.querySelector(".modal")
+
+        openButton.addEventListener("click", () => {
+            modal.showModal()
+        })
+
+        closeButton.addEventListener("click", () => {
+            modal.close()
+        })
+
+    </script>
+
+</body>
+</html>
+
+
+
